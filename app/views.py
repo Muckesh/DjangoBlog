@@ -5,6 +5,12 @@ from .models import *
 # Create your views here.
 def Home(request):
     context = {
-        'blog': BlogPost.objects.get(id=1),
+        'blogs': BlogPost.objects.all(),
+    }
+    return render(request, 'home.html', context)
+
+def Post(request, slug):
+    context = {
+        'blog': BlogPost.objects.get(slug=slug)
     }
     return render(request, 'index.html', context)
