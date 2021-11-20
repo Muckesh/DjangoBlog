@@ -43,7 +43,8 @@
                 <div class="col-lg-8">
                     {% for post in blogs %}
                     <a href="{% url 'Post' post.slug %}" style="text-decoration: none;">
-                    <div style="background-color: aqua; padding: 20px;margin-bottom: 20px; border-radius: 10px;">
+                        <!-- background-color: aqua;  -->
+                    <div style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 20px;margin-bottom: 20px; border-radius: 10px;">
                         <!-- Post content-->
                         <article>
                             <!-- Post header-->
@@ -53,16 +54,16 @@
                                 <!-- Post meta content-->
                                 <div class="text-muted fst-italic mb-2">Posted on {{post.date}} by {{post.author}}</div>
                                 <!-- Post categories-->
-                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{post.category}}</a>
                                 <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                             </header>
                             <!-- Preview image figure-->
-                            <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                            <figure class="mb-4"><img class="img-fluid rounded" src="/{{post.img}}/" alt="..." /></figure>
                         </article>
-                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around;">
                             <i class="fa fa-heart" style="color: red; font-size: 24px;"><br>2,000</i>
-                            <i class="fa fa-comment" style="color: aliceblue; font-size: 24px;">2,000</i>
-                            <i class="fa fa-bookmark" style="color: aliceblue; font-size: 24px;">2,000</i>
+                            <i class="fa fa-comment" style="color: rgb(46, 81, 112); font-size: 24px;">2,000</i>
+                            <i class="fa fa-bookmark" style="color: rgb(46, 81, 112); font-size: 24px;"></i>
                         </div>
                     </div>
                     </a>
@@ -86,20 +87,13 @@
                         <div class="card-header">Categories</div>
                         <div class="card-body">
                             <div class="row">
+                                {% for cat in category %}
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
+                                        <li><a href="#!">{{cat.title}}</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
