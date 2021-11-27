@@ -15,7 +15,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True)
     category = models.ForeignKey(
         Category, on_delete=SET_NULL, null=True, blank=True)
-    img = models.ImageField(upload_to='images/', null=True, blank=True)
+    img = models.ImageField(upload_to='images/')
     description = models.TextField(null=True, blank=True)
     author = models.CharField(max_length=200, null=True, blank=True)
     slug = models.SlugField(max_length=600, null=True, blank=True)
